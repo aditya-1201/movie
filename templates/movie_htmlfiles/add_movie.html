@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+	
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+
+	
+		<p><label for="id_movie_name">Movie name:</label>
+			<input type="text" name="movie_name" maxlength="120" required id="id_movie_name"></p>
+
+		<p><label for="id_release_date">Release date:</label>
+			<input type="date" name="release_date" required id="id_release_date"></p>
+		
+		<p><label for="id_director">Director:</label>
+	 		<input type="text" name="director" maxlength="120" required id="id_director"></p>
+		
+		<p><label for="id_writers">Writers:</label> 
+			<input type="text" name="writers" maxlength="120" required id="id_writers"></p>
+		
+		<p><label for="id_stars">Stars:</label> 
+			<input type="text" name="stars" maxlength="120" required id="id_stars"></p>
+		
+		<p><label for="id_description">Description:</label> 
+			<input type="text" name="description" maxlength="255" required id="id_description"></p>
+		
+		<p><label for="id_picture">Picture:</label> 
+			<input type="file" name="picture" accept="image/*" required id="id_picture"></p>
+
+		<input type="Submit" name="" value="ADD MOVIE">
+
+	</form>
+
+{% endblock %}

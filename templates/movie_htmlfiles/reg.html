@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Reg Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+    function validme(form)
+    {
+
+        var pass1 = document.getElementById('password').value;
+            errors = [];
+            if (pass1 == "") {
+            errors.push("Your password must not be empty");
+        }
+        if (pass1.length < 8) {
+            errors.push("Your password must be at least 8 characters");
+        }
+        if (pass1.search(/[a-z]/i) < 0) {
+            errors.push("Your password must contain at least one letter.");
+        }
+        if (pass1.search(/[0-9]/) < 0) {
+            errors.push("Your password must contain at least one digit.");
+        }
+        if (errors.length > 0) {
+            alert(errors.join("\n"));
+            return false;
+        }
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-4 col-md-4">
+                <form method="POST" onclick="validme();" >
+                    {% csrf_token %}
+                    <h5>Please Register Your Details</h5>
+                {{ rform }}<br>
+                    <center>
+                <input type="submit" value="Submit" class="btn btn-success" >
+<!--                     <button>-->
+<!--                         <a href="/">submit</a>-->
+<!--                     </button>-->
+                <input type="reset" value="Clear" class="btn btn-danger">
+                        <button><a href="/">SignIn</a></button>
+                    </center>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+

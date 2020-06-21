@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+	
+		<label for="">Name:</label>
+			 {{object.movie_name}} </br>
+		<label for="">Release Date:</label>
+			 {{object.release_date}} </br>
+		<label for="">Director:</label>
+			 {{object.director}} </br>
+		<label for="">Writers:</label>
+			 {{object.writers}} </br>
+		<label for="">Stars:</label>
+			 {{object.stars}} </br>
+
+
+{% endblock %}

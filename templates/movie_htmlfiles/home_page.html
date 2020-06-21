@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row">
+		<div class="col-4">
+			<div class="card" style="width: 18rem;">
+	  <img src="{% static 'film-roll.svg' %}" width="30" height="30" class="card-img-top" alt="...">
+	  <div class="card-body">
+	    <h5 class="card-title text-center">Movies</h5>
+	    <p class="card-text text-center">{{ movie_count }}</p>
+	   
+	  </div>
+	</div>
+		</div>
+		<div class="col-4">
+			<div class="card" style="width: 18rem;">
+
+	  <img src="{% static 'cinema.svg' %}" width="30" height="30" class="card-img-top" alt="...">
+	  <div class="card-body">
+	    <h5 class="card-title text-center">Videos</h5>
+	    <p class="card-text"></p>
+	   
+	  </div>
+	</div>
+		</div>
+		<div class="col-4">
+			<div class="card" style="width: 18rem;">
+	  <img src="{% static 'users.svg' %}" class="card-img-top" width="30" height="30" alt="...">
+	  <div class="card-body">
+	    <h5 class="card-title text-center">Users</h5>
+	    <p class="card-text text-center">{{ user_count }}</p>
+	   
+	  </div>
+	</div>
+		</div>
+</div>
+
+<p  class="card-text text-center my-4"> IMDb (Internet Movie Database)[2] is an online database of information related to films, television programs, home videos, video games, and streaming content online – including cast, production crew and personal biographies, plot summaries, trivia, ratings, and fan and critical reviews. An additional fan feature, message boards, was abandoned in February 2017. Originally a fan-operated website, the database is owned and operated by IMDb.com, Inc., a subsidiary of Amazon. </p>
+	   
+
+<div align="right">
+
+<a class="btn btn-info" href="{% url 'add_movie' %}"> <img src="{% static 'add.svg' %}" width="20" height="20" alt="...">    ADD MOVIE</a><br><br>
+</div>
+
+    <div class="row">
+        {% for instance in movie_qs %}
+            
+          <div class="card" style="width: 18rem;">
+		      <a href="{% url 'movie_details' instance.id %}"><img class="card-img-top" height="100" width="100" src="{{ instance.picture.url }}" alt=""></a>
+		    <div class="card-body">
+		      <h5 class="card-title">{{ instance.movie_name }}</h5>
+		      <p class="card-text">{{ instance.release_date }}</p>
+		    </div>
+		  </div>
+
+            
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

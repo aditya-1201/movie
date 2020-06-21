@@ -1,0 +1,38 @@
+{% extends 'MyApp/base.html' %}
+{% block body_block %}
+
+<!--{% if form.errors %}-->
+<!--<p>Your username and password didn't match. Please try again.</p>-->
+<!--{% endif %}-->
+
+<!--{% if next %}-->
+<!--    {% if user.is_authenticated %}-->
+<!--    <p>Your account doesn't have access to this page. To proceed,-->
+<!--    please login with an account that has access.</p>-->
+<!--    {% else %}-->
+<!--    <p>Please login to see this page.</p>-->
+<!--    {% endif %}-->
+<!--{% endif %}-->
+
+
+
+<h2>Login</h2>
+
+<p>Please login with your valid credentials</p>
+<form action="{% url 'login' %}" method="post" novalidate>
+<!--    novalidate removes browser  validations as I have apply django validations-->
+
+
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit" value="Login">
+
+
+</form>
+
+<p><a href="{% url 'password_reset' %}">Reset Password</a> </p>
+
+
+
+{% endblock %}
